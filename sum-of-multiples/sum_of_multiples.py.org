@@ -1,0 +1,7 @@
+def sum_of_multiples(limit, multiples):
+    items = set()
+    for multiple in multiples:
+# range(1, int((limit - 1) / multiple) + 1):
+       for num in list(range(1, limit+1, multiple)):
+          items.add(num * multiple)
+    return sum(items)

@@ -1,0 +1,18 @@
+class Garden(object):
+    students = ['Alice','Bob', 'Charlie', 'David', 'Eve', 'Fred', 'Ginny', 'Harriet', 'Ileana', 'Joseph', 'Kincaid', 'Larry']
+    plant_names = {'V': 'Violets', 'R': 'Radishes', 'C': 'Clover', 'G': 'Grass'}
+    diagram = []
+    def __init__(self, diagram, students=[]):
+       if len(students)>0:
+          self.students = students
+          self.students.sort()
+       self.diagram = diagram.split('\n')
+
+    def plants(self, student):
+      if len(self.diagram[0]) > 2:
+         list1 = [self.diagram[0][i:i+2] for i in range(0, len(self.diagram[0]), 2)]
+         list2 = [self.diagram[1][i:i+2] for i in range(0, len(self.diagram[1]), 2)]
+         combi = list(zip(list1, list2))
+         return [self.plant_names[c] for c in ''.join(combi[self.students.index(student)])] 
+      else:
+         return [self.plant_names[c] for c in ''.join(self.diagram)]
