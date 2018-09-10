@@ -1,0 +1,25 @@
+def saddle_points(matrix):
+   for m in matrix:
+      if len(m) != len(matrix):
+        raise ValueError('invalid!')
+   saddle = set()
+   for i in range(0, len(matrix)):
+      maxval = max(matrix[i])
+      maxpos = None
+      if matrix[i][i] == maxval:
+        maxpos = i
+      else:
+        maxpos = matrix[i].index(maxval)
+      minlist= []
+      for j in range(0, len(matrix)):
+        minlist.append(matrix[j][maxpos])
+      minval = min(minlist)
+      minpos = None
+      if minlist[i] == minval:
+        minpos = i
+      else: 
+        minpos = minlist.index(minval)
+      if maxval == minval:
+        saddle.add((minpos, maxpos))
+   print(saddle)
+   return saddle

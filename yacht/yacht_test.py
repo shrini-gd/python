@@ -13,6 +13,7 @@ class YachtTest(unittest.TestCase):
     def test_not_yacht(self):
         self.assertEqual(score([1, 3, 3, 2, 5], yacht.YACHT), 0)
 
+    
     def test_ones(self):
         self.assertEqual(score([1, 1, 1, 3, 5], yacht.ONES), 3)
 
@@ -39,7 +40,7 @@ class YachtTest(unittest.TestCase):
 
     def test_full_house_two_small_three_big(self):
         self.assertEqual(score([2, 2, 4, 4, 4], yacht.FULL_HOUSE), 16)
-
+     
     def test_full_house_three_small_two_big(self):
         self.assertEqual(score([5, 3, 3, 5, 3], yacht.FULL_HOUSE), 19)
 
@@ -51,7 +52,7 @@ class YachtTest(unittest.TestCase):
 
     def test_yacht_is_not_a_full_house(self):
         self.assertEqual(score([2, 2, 2, 2, 2], yacht.FULL_HOUSE), 0)
-
+    
     def test_four_of_a_kind(self):
         self.assertEqual(score([6, 6, 4, 6, 6], yacht.FOUR_OF_A_KIND), 24)
 
@@ -60,7 +61,7 @@ class YachtTest(unittest.TestCase):
 
     def test_full_house_is_not_four_of_a_kind(self):
         self.assertEqual(score([3, 5, 4, 1, 2], yacht.FOUR_OF_A_KIND), 0)
-
+    
     def test_little_straight(self):
         self.assertEqual(score([3, 5, 4, 1, 2], yacht.LITTLE_STRAIGHT), 30)
 
@@ -81,13 +82,12 @@ class YachtTest(unittest.TestCase):
 
     def test_big_straight_as_little_straight(self):
         self.assertEqual(score([6, 5, 4, 3, 2], yacht.LITTLE_STRAIGHT), 0)
-
+    
     def test_choice(self):
         self.assertEqual(score([3, 3, 5, 6, 6], yacht.CHOICE), 23)
 
     def test_yacht_as_choice(self):
         self.assertEqual(score([2, 2, 2, 2, 2], yacht.CHOICE), 10)
-
 
 if __name__ == '__main__':
     unittest.main()

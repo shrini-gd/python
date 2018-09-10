@@ -1,0 +1,15 @@
+class School(object):
+    def __init__(self):
+       self.students = {}
+       self.sorted_students = []
+
+    def add_student(self, name, grade):
+       self.students[name] = grade 
+       sort_students = sorted(self.students.items())
+       self.sorted_students = sorted(sort_students, key=lambda x: x[1])
+
+    def roster(self):
+       return [t[0] for t in self.sorted_students]
+
+    def grade(self, grade_number):
+       return [name for (name, grade) in self.sorted_students if grade == grade_number]

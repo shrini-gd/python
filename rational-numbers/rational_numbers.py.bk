@@ -1,0 +1,67 @@
+from __future__ import division
+
+
+class Rational(object):
+    def __init__(self, numer, denom):
+        self.numer = numer
+        self.denom = denom
+
+    def __eq__(self, other):
+        gcd = self._gcd(self.numer, self.denom)
+        self.numer = self.numer / gcd
+        self.denom = self.denom / gcd
+        return self.numer == other.numer and self.denom == other.denom
+
+    def __repr__(self):
+        return '{}/{}'.format(self.numer, self.denom)
+
+    def _gcd(self, a, b):
+        while(b):
+           a, b = b, a % b
+        return a
+
+    def __add__(self, other):
+        self.numer = self.numer * other.denom + other.numer * self.denom
+        self.denom = self.denom * other.denom if self.numer != 0 else 1
+        # gcd = self._gcd(self.numer, self.denom)
+        # self.numer = self.numer / gcd
+        # self.denom = self.denom / gcd
+        return self
+
+    def __sub__(self, other):
+        self.numer = self.numer * other.denom - other.numer * self.denom
+        self.denom = self.denom * other.denom if self.numer != 0 else 1
+        # gcd = self._gcd(self.numer, self.denom)
+        # self.numer = self.numer / gcd
+        # self.denom = self.denom / gcd 
+        return self
+
+    def __mul__(self, other):
+        self.numer = self.numer * other.numer
+        self.denom = self.denom * other.denom if self.numer != 0 else 1
+        # gcd = self._gcd(self.numer, self.denom)
+        # self.numer = self.numer / gcd
+        # self.denom = self.denom / gcd
+        return self
+
+    def __truediv__(self, other):
+        self.numer = self.numer * other.denom
+        self.denom = other.numer * self.denom
+        # gcd = self._gcd(self.numer, self.denom)
+        # self.numer = self.numer / gcd
+        # self.denom = self.denom / gcd
+        return self
+  
+    def __abs__(self):
+        self.numer = -1*self.numer if self.numer < 0 else self.numer
+        self.denom = -1*self.denom if self.denom < 0 else self.denom
+        return self
+
+    def __pow__(self, power):
+        power = -1*power if power < 0 else power
+        self.numer = self.numer**power 
+        self.denom = self.denom**power
+        return self
+
+    def __rpow__(self, base):
+        return pow(base**self.numer, (1/self.denom))
